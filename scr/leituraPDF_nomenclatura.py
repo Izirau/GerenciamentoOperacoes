@@ -56,6 +56,7 @@ def convert_pdf(path, format='text', codec='utf-8', password=''):
     fp.close()
     device.close()
     retstr.close()
+    print("Log: Arquivo convertido")
     return text
 
 #Converte as linhas text abaixo de textline para somente uma linha
@@ -70,7 +71,7 @@ def compila_text_line(xml_as_text):
             texto = ''
             quantidade = 0
             for filho in child.iter(filtro):
-                #if filho.tag == 'textline': continue
+                if filho.tag == 'textline': continue
 
                 #para cada linha que tem texto é adicionado o valor do texto da linha na variável e 
                 #um valor no contador quantidade, para posteriormente saber quantas linhas precisam ser removidas
@@ -94,7 +95,7 @@ def compila_text_line(xml_as_text):
             #readiciona o texto como um elemento text abaixo do textline
             sub_element =  eletree.SubElement(child,"text")
             sub_element.text = texto
-    
+    print("Log: Texto corrigido")
     return raiz
     
 def arruma_texto(texto):
@@ -162,7 +163,6 @@ def posicionamento(arquivo):
         #ordenação inversa pois o x=0 e y=0 ficam na ponta inferior esquerda, aumentando para cima e pra a direita
         #ou seja, a primeira linha de cima é o maior valor de y.
         dic_lines = dict(sorted(dic_lines.items(), reverse = True))
-        
         #trata a nota de corretagem da clear - por enquanto a única testada
         dados_nota_corretagem.nota_corretagem_clear(dic_lines)          
 
@@ -176,6 +176,8 @@ if __name__ == '__main__':
     if not os.path.exists(arquivo):
         print("Error: Arquivo '{0}' não encontrado".format(arquivo))
         sys.exit()
+    else:
+        print("Log: Arquivo encontrado")
 
     if not conexaoBD.EnviaComandoDataBase('', bd):
         print("Error: Conexão com banco de dados falhou")

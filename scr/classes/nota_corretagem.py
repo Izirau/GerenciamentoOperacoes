@@ -25,13 +25,13 @@ class Operacao:
         self.Preco = ''
 
     def str(self) -> str:
-        texto = ''
+        texto = 'Log: '
         if self.CV == 'C':
-            texto = 'Compra de '
+            texto += 'Compra de '
         elif self.CV == 'V':
-            texto = 'Venda de '
+            texto += 'Venda de '
         else:
-            texto = "Operação não identificada de "
+            texto += "Operação não identificada de "
 
         texto += self.Quantidade + ' do ' + self.Papel + ' a R$' + self.Preco + ' com um total de: R$' + str(dbl(self.Quantidade) * dbl(self.Preco.replace(',', '.')))
         print(texto)
