@@ -1,0 +1,1 @@
+erro_leitura_nota = False

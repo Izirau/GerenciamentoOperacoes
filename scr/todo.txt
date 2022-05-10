@@ -1,0 +1,49 @@
+= Fazer leitura da nota
+    - Fazer pokayoke para validar se todas as operações foram corretamente lidas
+        - Verificar quantas linhas existem entre a linha que possui o texto "Negócios realizados" e a linha que tem resumo dos negócios
+        - Verificar quantas operações foram criadas na lista para envio no banco de dados
+        - Se for igual enviar a lista para o banco de dados
+    - usar regex ou outro tipo de validador de string para valiadar a informação
+    - Tentar colocar os textos que estão separados por xy dentro de cada retângulo para ter uma melhorar corresponência do título com o valor
+    - Caso o anterior não funcione, separar as notas em quadrantes e separar os textos por quadrantes para ter uma confiabilidade da informação melhor 
+        - Para uma confiabilidade maior ainda da informação, fazer o cruzamento desse método com o método de leitura por linha
+    - Fazer validação se a nota já está com toda a sua operação dentro do banco de dados
+        - Baseado no número da nota (uma por folha), fazer a recuperação de toda a nota do banco de dados, e cruzar com toda a informação que foi gerada dessa leitura 
+            - Caso não tenha a nota, adicionar linha a linha
+            - Caso tenha a nota e estiver diferente, alertar, mostrando as diferenças e sobrepor
+            - Caso esteja igual, avisar que a nota já foi carregada e não modificar nada
+    - Cálculo de Emolumentos
+        - Fazer o cálculo dos emolumentos na mão para cada operação
+            0,003020%: até 4 milhões de reais para pessoa física
+        - Cruzar com o valor que está na nota de corretagem
+        - Distribuir os valores entre as operações para adicionar no bando de dados
+    - Cálculo da Taxa de liquidação
+        - Fazer o cálculo da taxa paga na nota
+            Pessoas físicas e demais investidores: 0,0250%
+        - Cruzar com o valor que está na nota de corretagem
+        - Distribuir os valores entre as operações para adicionar no banco de dados
+
+= Fazer cálculo de DARF (se existir) automaticamente em caso de venda
+    - Colocar condição que ve o histórico de posição (se estiver negativo, fazer a compensação até zerar)
+    - Alertar no fechamento do mês que precisa pagar uma DARF caso tenha
+
+= Fazer ferramenta para cálculo de posição e de preço de entrada médio
+    - Identificar se o papel é uma ação, um FII, um BDR
+    
+= Fazer preço médio de FII ponderado pela distribuição e inflação
+    - Fazer uma tabela no banco de dados com o histórido de inflação. Meses como linhas, tipo de inflação como coluna
+        - IPCA
+        - IGPM
+        - INPC
+    - Fazer uma tabela com os valores das distribuições de todos os papeis. Meses como linha
+        Colunas
+            - papel
+            - valor da distribuição
+            - tipo da distribuição (dividendos, amortização, jcp)
+            - Data com
+            - Data ex
+    - Fazer ferramenta para puxar essa informação automaticamente
+    - Calcular o preço médio
+= 
+
+    
